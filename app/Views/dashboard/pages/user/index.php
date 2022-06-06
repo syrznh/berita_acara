@@ -7,35 +7,49 @@
 
     <!-- Area Chart -->
     <div class="col-xl">
-        <div class="card shadow mb-4">
+        <h1>Data Master</h1>
+        <div class="card shadow mt-4 mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header"></div>
-                        <a class="dropdown-item" href="#">Tambah Data</a>
-                        <a class="dropdown-item" href="#">Hapus data</a>
-                    </div>
-                </div>
+                <h6 class="m-0 font-weight-bold text-primary">Data Master User</h6>
+                <a href="<?= route_to('usersCreate') ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                    <i class="fa fa-plus-square fa-sm text-white-50"></i>
+                    Tambah Data
+                </a>
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                <table class="table dt-responsive nowrap" width="100%">
+                <table class="table dt-responsive nowrap" id="dataTable" width="100%">
                     <thead>
                         <tr>
                             <td>#</td>
-                            <td>Jenis Berita Acara</td>
-                            <td>Judul Pekerjaan</td>
-                            <td>Jenis Pekerjaan</td>
-                            <td>Document</td>
-                            <td>Persentase</td>
-                            <td>Keterangan</td>
+                            <td>Nama</td>
+                            <td>Email</td>
+                            <td>Username</td>
+                            <td>Role</td>
+                            <td>Aksi</td>
                         </tr>
                     </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($users as $key) : ?>
+                            <tr>
+                                <td><?= $i++ ?></td>
+                                <td><?= $key['nama']; ?></td>
+                                <td><?= $key['email']; ?></td>
+                                <td><?= $key['username']; ?></td>
+                                <td><?= $key['role_name']; ?></td>
+                                <td>
+                                    <a href="" class="d-none d-sm-inline-block btn btn-warning btn-sm shadow-sm">
+                                        <i class="fa fa-pencil-alt"></i>
+                                    </a>
+                                    <a href="" class="d-none d-sm-inline-block btn btn-danger btn-sm shadow-sm">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
                 </table>
                 <!-- <div class="chart-area">
                     <canvas id="myAreaChart"></canvas>

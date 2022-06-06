@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Controllers\UsersController;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -38,8 +40,24 @@ $routes->get('logout', 'Auth::logout', ["as" => "logout"], ["filter" => "noauth"
 
 
 $routes->group("home", ["filter" => "auth"], function ($routes) {
-    $routes->get('/', 'Admin\Dashboard::index');
+    $routes->get('/', 'DashboardController::index');
 });
+
+$routes->group("transaksi", ["filter" => "auth"], function ($routes) {
+    $routes->get('/', 'TransaksiController::index');
+});
+
+//user
+$routes->group("users", ["filter" => "auth"], function ($routes) {
+    $routes->get('/', 'UsersController::index', ["as" => "usersIndex"]);
+    $routes->get('create', 'UsersController::create', ["as" => "usersCreate"]);
+    $routes->post('store', 'UserController::store', ["as" => "userStore"]);
+    $routes->get('edit/(:num)', 'UserController::edit/$1', ["as" => "usersEdit"]);
+    $routes->post('update/(:num)', 'UsersController::update/$1', ["as" => "usersUpdate"]);
+    $routes->get('delete/(:num)', 'UserController::delete/$1', ["as" => "usersDelete"]);
+});
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

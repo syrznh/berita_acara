@@ -2,14 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Models\UserModel;
+use App\Models\UsersModel;
 
 class Auth extends BaseController
 {
     public function __construct()
     {
         //membuat user model untuk konek ke database 
-        $this->userModel = new UserModel();
+        $this->usersModel = new UsersModel();
 
         //meload validation
         $this->validation = \Config\Services::validation();
@@ -20,6 +20,10 @@ class Auth extends BaseController
     public function login()
     {
         //menampilkan halaman login 
+        if (session()->get('isLogin') == 1) {
+            return redirect()->to(base_url('home'));
+            exit;
+        }
         return view('auth/login');
     }
 
@@ -40,7 +44,7 @@ class Auth extends BaseController
         $data = $this->request->getPost();
 
         //ambil data user di database yang emailnya sama 
-        $user = $this->userModel->where('email', $data['email'])->first();
+        $user = $this->usersModel->where('username', $data['username'])->first();
         //cek apakah email ditemukan
         if ($user) {
             //cek password

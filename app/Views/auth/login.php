@@ -18,7 +18,7 @@
     <!-- Custom fonts for this template-->
     <link href="<?php
 
-                use App\Controllers\Admin\Dashboard;
+                use App\Controllers\Dashboard;
 
                 echo base_url('dashbaord/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -83,7 +83,7 @@ $password = $session->getFlashdata('password');
 
                             <form action="/auth/valid_login" method="POST" autocomplete="off" class="user">
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Username" required>
+                                    <input type="text" name="username" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Username" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" required>
