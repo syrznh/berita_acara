@@ -51,10 +51,9 @@ $routes->group("transaksi", ["filter" => "auth"], function ($routes) {
 $routes->group("users", ["filter" => "auth"], function ($routes) {
     $routes->get('/', 'UsersController::index', ["as" => "usersIndex"]);
     $routes->get('create', 'UsersController::create', ["as" => "usersCreate"]);
-    $routes->post('store', 'UserController::store', ["as" => "userStore"]);
-    $routes->get('edit/(:num)', 'UserController::edit/$1', ["as" => "usersEdit"]);
-    $routes->post('update/(:num)', 'UsersController::update/$1', ["as" => "usersUpdate"]);
-    $routes->get('delete/(:num)', 'UserController::delete/$1', ["as" => "usersDelete"]);
+    $routes->post('store', 'UsersController::store', ["as" => "usersStore"]);
+    $routes->get('delete/(:num)', 'UsersController::delete/$1', ["as" => "usersDelete"]);
+    $routes->get('edit/(:segment)', 'UsersController::edit/$1', ["as" => "usersEdit"]);
 });
 
 

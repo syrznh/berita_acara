@@ -6,11 +6,13 @@
 
 <?= $this->section('content') ?>
 
+<?php $nama = session()->get('nama'); ?>
+
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">
-        Selamat Datang <?= session()->get('nama'); ?>
-    </h1>
+    <h2 class="h3 mb-0 text-gray-800">
+        Selamat Datang <?php echo ucwords($nama) ?>
+    </h2>
 </div>
 
 

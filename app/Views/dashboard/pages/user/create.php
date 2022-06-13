@@ -7,7 +7,6 @@
 <?= $this->section('content') ?>
 
 <!-- Content Row -->
-
 <div class="row">
     <!-- Area Chart -->
     <div class="col-xl">
@@ -15,68 +14,63 @@
         <div class="card shadow mt-4 mb-4">
             <!-- Card Body -->
             <div class="card-body">
-                <!-- Content Row -->
-                <div class="row">
-                    <div class="col">
-                        <form action="<?php echo base_url('') ?>" method="post" class="mt-3 mx-5 my-4">
-                            <?= csrf_field(); ?>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Nama</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control form-control-sm" id="">
-                                </div>
+                <form action="<?= base_url('/users/store') ?>" method="post" class="mt-3 mx-5 my-4">
+                    <div class="form-group row">
+                        <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" value="<?= old('nama'); ?>">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('nama'); ?>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Email</label>
-                                <div class="col-sm-8">
-                                    <input type="email" class="form-control form-control-sm" id="">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Username</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control form-control-sm" id="">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                                <div class="col-sm-8">
-                                    <input type="password" class="form-control form-control-sm" id="inputPassword3">
-                                </div>
-                            </div>
-                            <fieldset class="form-group row">
-                                <legend class="col-form-label col-sm-2 float-sm-left pt-0">Role</legend>
-                                <div class="col-sm-8">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="role" id="" value="admin">
-                                        <label class="form-check-label" for="">
-                                            Admin
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="role" id="" value="user">
-                                        <label class="form-check-label" for="">
-                                            User
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="role" id="" value="management">
-                                        <label class="form-check-label" for="">
-                                            Management
-                                        </label>
-                                    </div>
-                                </div>
-                            </fieldset>
-
-                            <div class="form-group" style="margin-top: 20px;">
-                                <button type="submit" class="btn btn-success">Tambah</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="email" name="email" value="<?= old('email'); ?>">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('email'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="username" class="col-sm-2 col-form-label">Username</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" id="username" name="username" value="<?= old('username'); ?>">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('username'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control form-control-sm <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" name="password">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('password'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="role_id" class="col-sm-2 col-form-label">Role</label>
+                        <div class="col-sm-8">
+                            <select class="form-control form-control-sm <?= ($validation->hasError('role_id')) ? 'is-invalid' : ''; ?>" id="role_id" name="role_id" value="<?= old('role_id'); ?>">
+                                <option selected disabled>-- Pilih Role --</option>
+                                <option value="1">Admin</option>
+                                <option value="2">User</option>
+                                <option value="3">Management</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('role_id'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 20px;">
+                        <button type="submit" class="btn btn-success">Tambah</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
-<!-- /.container-fluid -->
-<?= $this->endSection() ?>
+    <!-- /.container-fluid -->
+    <?= $this->endSection() ?>
