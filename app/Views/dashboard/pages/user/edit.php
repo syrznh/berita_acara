@@ -14,7 +14,7 @@
         <div class="card shadow mt-4 mb-4">
             <!-- Card Body -->
             <div class="card-body">
-                <form action="<?= base_url('/users/update' . $users['id']); ?>" method="post" class="mt-3 mx-5 my-4">
+                <form action="<?= base_url('/users/update/' . $users['id']); ?>" method="post" class="mt-3 mx-5 my-4">
                     <div class="form-group row">
                         <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-8">

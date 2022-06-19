@@ -115,15 +115,22 @@ class UsersController extends BaseController
 
     public function update($id)
     {
+        // return json_encode($this->request->getPost());
         $users = new UsersModel();
+        if ($this->request->getPost('password')) {
+            $pass = md5($this->request->getPost('password'));
+        } else {
+            $data = $users->where('id', $id)->first();
+            $pass = $data['password'];
+        }
+
         $users->update($id, [
             "nama" => $this->request->getPost('nama'),
             "email" => $this->request->getPost('email'),
             "username" => $this->request->getPost('username'),
             "role_id" => $this->request->getPost('role_id'),
-            // "password" => $password
+            "password" => $pass
         ]);
-
 
         session()->setFlashdata('success', 'Berhasil mengubah data!');
         return redirect()->route('usersIndex');

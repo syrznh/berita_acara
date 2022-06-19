@@ -54,6 +54,7 @@ $routes->group("users", ["filter" => "auth"], function ($routes) {
     $routes->post('store', 'UsersController::store', ["as" => "usersStore"]);
     $routes->get('delete/(:num)', 'UsersController::delete/$1', ["as" => "usersDelete"]);
     $routes->get('edit/(:segment)', 'UsersController::edit/$1', ["as" => "usersEdit"]);
+    $routes->post('update/(:num)', 'UsersController::update/$1', ["as" => "userUpdate"]);
 });
 
 
